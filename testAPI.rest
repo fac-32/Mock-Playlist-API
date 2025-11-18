@@ -1,0 +1,21 @@
+GET http://localhost:3000/api/playlists
+
+###
+
+POST http://localhost:3000/api/playlists HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Hello",
+    "tracks": "musicccc"
+}
+
+###
+
+DELETE http://localhost:3000/api/playlists/1 HTTP/1.1
+content-type: application/json
+
+###
+
+GET http://localhost:3000/api/playlists/2 HTTP/1.1
+content-type: application/json
