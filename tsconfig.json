@@ -16,9 +16,9 @@
     // and npm install -D @types/node
 
     // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
+    "sourceMap": false,
+    "declaration": false,
+    "declarationMap": false,
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
@@ -34,8 +34,8 @@
 
     // Recommended Options
     "strict": true,
-    // "jsx": "react-jsx", // Removed as it's not needed for a backend server
-    "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": false,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
