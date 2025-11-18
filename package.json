@@ -5,12 +5,14 @@
     "express": "^5.1.0",
     "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.10"
   },
-"scripts": {
-  "dev": "ts-node-dev --respawn server.ts",
-  "build": "tsc",
-  "start": "node ./dist/server.js"
-},
+  "scripts": {
+    "dev": "ts-node-dev --respawn server.ts",
+    "build": "tsc",
+    "start": "node ./dist/server.js",
+    "test": "vitest"
+  },
   "type": "module"
 }
