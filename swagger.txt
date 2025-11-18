@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Playlists API
+  description: API to manage music playlists
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local server
+paths:
+  /playlists:
+    get:
+      summary: Get all playlists
+      responses:
+        '200':
+          description: List of playlists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Playlist'
+    post:
+      summary: Create a new playlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPlaylist'
+      responses:
+        '200':
+          description: Playlist created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+  /id:
+    get:
+      summary: Get a playlist by id
+      parameters:
+        - name: id
+          in: path
+          description: Playlist ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Playlist found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+        '404':
+          description: Playlist not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete a playlist by id
+      parameters:
+        - name: id
+          in: path
+          description: Playlist ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Deleted playlist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playlist'
+        '404':
+          description: Playlist not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Playlist:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: 80s Hits
+        tracks:
+          type: array
+          items:
+            type: string
+          example: ["Every Breath You Take", "What a Feeling", "We are the World"]
+    NewPlaylist:
+      type: object
+      required:
+        - name
+        - tracks
+      properties:
+        name:
+          type: string
+          example: "New Playlist"
+        tracks:
+          type: array
+          items:
+            type: string
+          example: ["Song 1", "Song 2"]
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Playlist not found
